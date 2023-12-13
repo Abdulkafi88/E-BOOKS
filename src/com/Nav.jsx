@@ -3,6 +3,7 @@ import { useState } from "react";
 import Logo from "../img/logo.png";
 import Drop from './Drop'
 import Search from './Search'
+import {Link} from 'react-router-dom'
 
 const Nav = ({handleSearch}) => {
     const [open,setOpen] = useState(false)
@@ -16,7 +17,7 @@ const Nav = ({handleSearch}) => {
         <div className="border-b border-slate-200 dark:border-b-0 flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-3">
           <a className="flex items-center" href="#">
             <img className="mr-3 h-10" src={Logo} alt="" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">CodeBook</span>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><Link to={'/'}>CodeBook</Link></span>
           </a>
           <div className="flex items-center relative">
             <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-gear-wide-connected"></span>
