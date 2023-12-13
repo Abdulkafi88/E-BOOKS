@@ -6,6 +6,7 @@ import Search from "./com/Search";
 import Books from "./com/Books";
 import Tes from "./com/Tes";
 import Login from "./com/Login";
+import Register from "./com/Register"
 import Footer from './com/Footer'
 function App() {
   const [ToggleSearch, setToggleSearch] = useState(false);
@@ -22,16 +23,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home ToggleSearch={ToggleSearch} />} />
         <Route path="/search" element={<Search />} />
-       
+
         <Route path="/login" element={<Login />} />
-    
+        <Route path="/Register" element={<Register />} />
       </Routes>
       {isHome && <Books />}
-      {isHome && <Tes />} 
-      {isHome && <Footer />} 
-    
+      {isHome && <Tes />}
+      {isHome && <Footer />}
     </div>
-  );
+  )
 }
 
 export default App;
