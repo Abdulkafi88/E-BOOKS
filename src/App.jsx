@@ -6,7 +6,7 @@ import Search from "./com/Search";
 import Books from "./com/Books";
 import Tes from "./com/Tes";
 import Login from "./com/Login";
-
+import Footer from './com/Footer'
 function App() {
   const [ToggleSearch, setToggleSearch] = useState(false);
 
@@ -28,6 +28,7 @@ function App() {
       </Routes>
       {isHome && <Books />}
       {isHome && <Tes />} 
+      {isHome && <Footer />} 
     
     </div>
   );
