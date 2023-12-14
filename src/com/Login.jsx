@@ -10,7 +10,7 @@ import React from 'react'
             Login
           </p>
         </section>
-        <form>
+        <form >
           <div className="mb-6">
             <label
               for="email"
