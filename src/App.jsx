@@ -17,6 +17,7 @@ function App() {
   };
   const location = useLocation()
   const isHome = location.pathname==='/'
+  const isfooter = location.pathname==='/Login'
   
   return (
     <div className="App dark:bg-dark">
@@ -32,6 +33,7 @@ function App() {
       {isHome && <Books />}
       {isHome && <Tes />}
       {isHome && <Footer />}
+      {isfooter && <Footer />}
     </div>
   )
 }

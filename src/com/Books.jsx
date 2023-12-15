@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import Nav from './Nav'
 const Books = () => {
   const [eBook, setEBook] = useState([
     {
@@ -10,7 +10,7 @@ const Books = () => {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
       price: "$99",
       buttonLabel: "Add To Cart",
-      addToCart: true
+      addToCart: true,
     },
     {
       img: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
@@ -19,22 +19,23 @@ const Books = () => {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
       price: "$99",
       buttonLabel: "Add To Cart",
-      addToCart: true
+      addToCart: true,
     },
     {
       img: "https://images.unsplash.com/photo-1613490900233-141c5560d75d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
-      title: "Frontend Fastlane Plan With Projects",
+      title: "JavaScript Basics To Advance ",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
-      price: "$29",
+      price: "$99",
       buttonLabel: "Add To Cart",
-      addToCart: true
+      addToCart: true,
     },
   ]);
   const handleCart = (index) => {
     const updatedBooks = [...eBook];
     updatedBooks[index].addToCart = !updatedBooks[index].addToCart;
     setEBook(updatedBooks);
+    
   };
 
   return (
@@ -77,7 +78,7 @@ const Books = () => {
                       ? "inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
                       : "inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800"
                   }
-                  onClick={() => handleCart(index)}
+                  onClick={() => handleCart(index) }
                 >
                   {book.addToCart ? (
                     <>
