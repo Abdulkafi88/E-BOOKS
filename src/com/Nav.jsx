@@ -25,7 +25,7 @@ const Nav = ({handleSearch,}) => {
           <a className="flex items-center" href="#">
             <img className="mr-3 h-10" src={Logo} alt="" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              <Link to={"/"}>CodeBok</Link>
+              <Link to={"/"}>CodeBook</Link>
             </span>
           </a>
           <div className="flex items-center relative" >
