@@ -16,7 +16,7 @@ const Nav = ({handleSearch,}) => {
       setOpen(false)
     }
   const addToCart=()=>{
-    setCart(per=> per+1)
+    setCart(pev => pev+1)
   }
   return (
     <header>
