@@ -1,24 +1,54 @@
-import React from 'react'
-import { useState } from 'react'
-import Books from './Books'
-import {Link} from 'react-router-dom'
-const AllBooks = () => {
-   const [eBook, setEBook] = useState([
-     {
-       img: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
-       title: "Basics To Advanced In React",
-       description:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
-       price: "$99",
-       buttonLabel: "Add To Cart",
-       addToCart: true,
-     },
-   ])
-    const handleCart = (index) => {
-      const updatedBooks = [...eBook]
-      updatedBooks[index].addToCart = !updatedBooks[index].addToCart
-      setEBook(updatedBooks)
-    }
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import  Search from './Search'
+
+const AllBooks = ({ToggleSearch}) => {
+  const [eBook, setEBook] = useState([
+    {
+      img: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
+      title: "Basics To Advanced In React",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      price: "$99",
+      buttonLabel: "Add To Cart",
+      addToCart: true,
+      rating: 5, 
+    },
+    {
+      img: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
+      title: "Django Framework for Beginners",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      price: "$19",
+      buttonLabel: "Add To Cart",
+      addToCart: true,
+      rating: 3, 
+    },
+    {
+      img: "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
+      title: "The Future of Design Systems",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      price: "$49",
+      buttonLabel: "Add To Cart",
+      addToCart: true,
+      rating: 4,
+    },
+    {
+      img: "https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
+      title: "Build a Blockchain from Scratch in Go",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      price: "$19",
+      buttonLabel: "Add To Cart",
+      addToCart: true,
+      rating: 4,
+    },
+ 
+  ]);
+  const [info,setInfo] = useState('')
+  const handleCart = (index) => {
+    const updatedBooks = [...eBook];
+    updatedBooks[index].addToCart = !updatedBooks[index].addToCart;
+    setEBook(updatedBooks);
+  };
+
   return (
     <section className="my-5">
       <div className="my-5 flex justify-between">
@@ -26,6 +56,7 @@ const AllBooks = () => {
           All eBooks()
         </span>
       </div>
+      {ToggleSearch && <Search/>}
       <div className="flex flex-wrap justify-center lg:flex-row">
         {eBook.map((book, index) => (
           <div
@@ -34,7 +65,7 @@ const AllBooks = () => {
           >
             <img src={book.img} alt="" />
             <div className="p-5">
-              <Link to={`# ${index}`}>
+              <Link to={`/AllBooksDetails/ ${index}`}>
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {book.title}
                 </h5>
@@ -44,11 +75,10 @@ const AllBooks = () => {
               </p>
             </div>
             <div className="flex items-center m-2">
-              <i className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
-              <i className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
-              <i className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
-              <i className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
-              <i className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
+        
+              {[...Array(book.rating)].map((_, i) => (
+                <i key={i} className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
+              ))}
             </div>
             <p className="flex justify-between items-center">
               <span className="text-2xl dark:text-gray-200 m-2">
@@ -77,7 +107,7 @@ const AllBooks = () => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AllBooks
+export default AllBooks;

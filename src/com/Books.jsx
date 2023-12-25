@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Nav from './Nav'
+import { Link , useParams,useNavigate } from "react-router-dom";
 const Books = () => {
+  const nav = useNavigate()
+  const { id } = useParams()
   const [eBook, setEBook] = useState([
     {
       img: "https://images.unsplash.com/photo-1595617795501-9661aafda72a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
@@ -52,7 +53,8 @@ const Books = () => {
             >
               <img src={book.img} alt="" />
               <div className="p-5">
-                <Link to={`# ${index}`}>
+                <Link to={`/Details/${index}`}>
+                
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {book.title}
                   </h5>

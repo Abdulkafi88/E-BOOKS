@@ -48,6 +48,7 @@ const Nav = ({handleSearch,}) => {
               className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"
             ></span>
             {/* {open && <Drop closeDrop={closeDrop} />} */}
+            {/* {open && <Drop  closeDrop={closeDrop} />} */}
             {open && <Drop  closeDrop={closeDrop} />}
           </div>
         </div>
