@@ -25,7 +25,11 @@ const Nav = ({handleSearch,}) => {
           <a className="flex items-center" href="#">
             <img className="mr-3 h-10" src={Logo} alt="" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+<<<<<<< HEAD
               <Link to={""}>CodeBook</Link>
+=======
+              <Link to={"//"}>CodeBook</Link>
+>>>>>>> parent of 3f0d8dd (.)
             </span>
           </a>
           <div className="flex items-center relative" >
