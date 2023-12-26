@@ -16,7 +16,7 @@ const nav = useNavigate()
       const user = userCredential.user;
 
       if (user) {
-       return nav('/')
+        nav('/')
         console.log('User logged in:', user);
       }
     } catch (error) {
