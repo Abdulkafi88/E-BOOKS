@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-const Details = () => {
+const Details = ({ setCartCount }) => {
   const [eBook, setEBook] = useState([
     {
       img: "https://images.unsplash.com/photo-1595617795501-9661aafda72a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
@@ -43,11 +43,12 @@ const Details = () => {
   const { id } = useParams();
   const bookIndex = parseInt(id, 10);
   const books = eBook[bookIndex];
-
   const handleCart = () => {
     const updatedBooks = [...eBook];
     updatedBooks[bookIndex].addToCart = !updatedBooks[bookIndex].addToCart;
     setEBook(updatedBooks);
+    const changeCount = updatedBooks[bookIndex].addToCart ? -1 : 1;
+    setCartCount((prevCount) => prevCount + changeCount);
   };
   return (
     <main>

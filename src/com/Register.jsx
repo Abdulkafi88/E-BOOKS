@@ -3,11 +3,12 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../Firebase';
 import { useNavigate } from 'react-router-dom';
 
+
 const Register = ({ setUserEmail }) => {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
   const [errMessge, setErrMessge] = useState('');
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -23,13 +24,15 @@ const Register = ({ setUserEmail }) => {
         setEmail('');
         setPassword('');
         console.log('User registered:', res.user);
-        nav('/Home'); // Redirect to Home after successful registration
+        if (nav) {
+          navigate('/'); 
+        }
       }
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {
         setErrMessge('Email is already in use. Please use another email.');
       }
-      // Handle other error cases if needed
+     
     }
   };
 

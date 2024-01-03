@@ -1,31 +1,34 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import  Search from './Search'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Search from "./Search";
 
-const AllBooks = ({ToggleSearch}) => {
+const AllBooks = ({ ToggleSearch, setCartCount }) => {
   const [eBook, setEBook] = useState([
     {
       img: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
       title: "Basics To Advanced In React",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
       price: "$99",
       buttonLabel: "Add To Cart",
       addToCart: true,
-      rating: 5, 
+      rating: 5,
     },
     {
       img: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
-      title: "Django Framework for Beginners",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      title: "Django Framework ",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
       price: "$19",
       buttonLabel: "Add To Cart",
       addToCart: true,
-      rating: 3, 
+      rating: 3,
     },
     {
       img: "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
       title: "The Future of Design Systems",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
       price: "$49",
       buttonLabel: "Add To Cart",
       addToCart: true,
@@ -34,29 +37,31 @@ const AllBooks = ({ToggleSearch}) => {
     {
       img: "https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
       title: "Build a Blockchain from Scratch in Go",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
       price: "$19",
       buttonLabel: "Add To Cart",
       addToCart: true,
       rating: 4,
     },
- 
   ]);
-  const [info,setInfo] = useState('')
+  const [info, setInfo] = useState("");
   const handleCart = (index) => {
     const updatedBooks = [...eBook];
     updatedBooks[index].addToCart = !updatedBooks[index].addToCart;
     setEBook(updatedBooks);
+    const changeCount = updatedBooks[index].addToCart ? -1 : 1;
+    setCartCount((prevCount) => prevCount + changeCount);
   };
 
   return (
     <section className="my-5">
       <div className="my-5 flex justify-between">
         <span className="text-2xl font-semibold dark:text-slate-100 mb-5">
-          All eBooks()
+          All eBooks({eBook.length})
         </span>
       </div>
-      {ToggleSearch && <Search/>}
+      {ToggleSearch && <Search />}
       <div className="flex flex-wrap justify-center lg:flex-row">
         {eBook.map((book, index) => (
           <div
@@ -75,9 +80,11 @@ const AllBooks = ({ToggleSearch}) => {
               </p>
             </div>
             <div className="flex items-center m-2">
-        
               {[...Array(book.rating)].map((_, i) => (
-                <i key={i} className="text-lg bi bi-star-fill text-yellow-500 mr-1"></i>
+                <i
+                  key={i}
+                  className="text-lg bi bi-star-fill text-yellow-500 mr-1"
+                ></i>
               ))}
             </div>
             <p className="flex justify-between items-center">

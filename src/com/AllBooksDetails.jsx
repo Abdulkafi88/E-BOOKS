@@ -1,28 +1,30 @@
-import React from 'react'
-import { useState , } from 'react'
-import { useParams } from 'react-router-dom'
-const AllBooksDetails = () => {
-  const [inStoreBooks,setinStoreBooks] = useState([
+import React from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+const AllBooksDetails = ({ setCartCount }) => {
+  const [eBook, setEBook] = useState([
     {
       img: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
       title: "Basics To Advanced In React",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
       price: "$99",
       buttonLabel: "Add To Cart",
       addToCart: true,
-      rating: 5, 
+      rating: 5,
       bestSeller: "BEST SELLER",
       instock: "INSTOCK",
       MB: "5 MB",
     },
     {
       img: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
-      title: "Django Framework for Beginners",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      title: "Django Framework ",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
       price: "$19",
       buttonLabel: "Add To Cart",
       addToCart: true,
-      rating: 3, 
+      rating: 3,
       bestSeller: "BEST SELLER",
       instock: "INSTOCK",
       MB: "5 MB",
@@ -30,7 +32,8 @@ const AllBooksDetails = () => {
     {
       img: "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
       title: "The Future of Design Systems",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
       price: "$49",
       buttonLabel: "Add To Cart",
       addToCart: true,
@@ -42,7 +45,8 @@ const AllBooksDetails = () => {
     {
       img: "https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=650&q=40",
       title: "Build a Blockchain from Scratch in Go",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde quisquam magni vel eligendi nam.",
       price: "$19",
       buttonLabel: "Add To Cart",
       addToCart: true,
@@ -51,16 +55,19 @@ const AllBooksDetails = () => {
       instock: "INSTOCK",
       MB: "5 MB",
     },
-  ])
-  
-  const {id} = useParams()
-  const bookid = parseInt(id,10)
-  const books = inStoreBooks[bookid]
+  ]);
+
+  const { id } = useParams();
+  const bookIndex = parseInt(id, 10);
+  const books = eBook[bookIndex];
   const handleCart = () => {
-    const updatedBooks = [...inStoreBooks];
-    updatedBooks[inStoreBooks].addToCart = !updatedBooks[inStoreBooks].addToCart;
+    const updatedBooks = [...eBook];
+    updatedBooks[bookIndex].addToCart = !updatedBooks[bookIndex].addToCart;
     setEBook(updatedBooks);
+    const changeCount = updatedBooks[bookIndex].addToCart ? -1 : 1;
+    setCartCount((prevCount) => prevCount + changeCount);
   };
+
   return (
     <main>
       <section>
@@ -121,7 +128,7 @@ const AllBooksDetails = () => {
         </div>
       </section>
     </main>
-  )
-}
+  );
+};
 
-export default AllBooksDetails
+export default AllBooksDetails;

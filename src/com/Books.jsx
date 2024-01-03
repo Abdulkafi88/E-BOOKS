@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link , useParams,useNavigate } from "react-router-dom";
-const Books = () => {
+const Books = ({setCartCount}) => {
   const nav = useNavigate()
   const { id } = useParams()
   const [eBook, setEBook] = useState([
@@ -36,6 +36,8 @@ const Books = () => {
     const updatedBooks = [...eBook];
     updatedBooks[index].addToCart = !updatedBooks[index].addToCart;
     setEBook(updatedBooks);
+    const changeCount = updatedBooks[index].addToCart ? -1 : 1;
+    setCartCount((prevCount) => prevCount + changeCount);
     
   };
 
