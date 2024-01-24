@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Nav from "./com/Nav";
 import Home from "./com/Home";
 import Search from "./com/Search";
@@ -24,6 +24,13 @@ function App() {
 
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isHome) {
+      navigate("/");
+    }
+  }, [isHome, navigate]);
 
   return (
     <div className="App dark:bg-dark">
@@ -35,9 +42,9 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="CartDetails" element={<CartDetails />} />
         <Route path="Register" element={<Register />} />
-        <Route path="AllBooks"element={<AllBooks ToggleSearch={ToggleSearch} setCartCount={setCartCount} />}/>
+        <Route path="AllBooks" element={<AllBooks ToggleSearch={ToggleSearch} setCartCount={setCartCount} />} />
         <Route path="Details/:id" element={<Details setCartCount={setCartCount} />} />
-        <Route path="AllBooksDetails/:id" element={<AllBooksDetails  setCartCount={setCartCount} />} />
+        <Route path="AllBooksDetails/:id" element={<AllBooksDetails setCartCount={setCartCount} />} />
       </Routes>
       {isHome && <Books setCartCount={setCartCount} />}
       {isHome && <Tes />}
